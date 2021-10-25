@@ -1,0 +1,49 @@
+{% extends 'dapapp/index.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/css/bootstrap.min.css' %}">
+    <div class="row">
+      <div class="col">
+        <h2>Please Signin</h2>
+        <small class="text-red"> {{ form.errors }}</small>
+    		<form method="POST" >
+          {% csrf_token %}
+          <div class="form-floating mb-3">
+            {% render_field form.username type="text" class="form-control rounded-4" id="floatingInput" placeholder="H. Name" %}
+            <label for="floatingInput">Health Center Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            {% render_field form.email type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" %}
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            {% render_field form.password1 type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" %}
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating mb-3">
+            {% render_field form.password2 type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" %}
+            <label for="floatingPassword">Confirm Password</label>
+          </div>
+          <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Sign up</button>
+          <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+          <hr class="my-4">
+          <h2 class="fs-5 fw-bold mb-3">Or</h2>
+          <a class="w-75 py-2 mb-2 btn btn-outline-dark rounded-4" href="">
+            <svg class="bi me-1" width="16" height="16"><use xlink:href="#twitter"/></svg>
+            Already have an account?<h6 class="text-info"> Login</h6>
+          </a>
+          
+        </form>
+      </div>
+      <div class="col">
+        <img class="h-100" src="{% static 'assets/img/jan-sendereks.jpg' %}">
+      </div>
+    </div>
+    <script>
+      const nav = document.getElementById('nav1');
+      nav.style.display = "none";
+    </script>
+{% endblock %}
